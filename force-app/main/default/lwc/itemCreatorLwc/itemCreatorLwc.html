@@ -1,0 +1,25 @@
+<template >
+    <div class={classStyle}>
+        <lightning-card title={title}>
+            <div class="slds-m-right_large slds-m-left_large">
+                <!-- Item Name -->
+                <lightning-input label="Item Name" value={itemName} onchange={handleItemNameChange}></lightning-input>
+        
+                <!-- Item Status (Picklist) -->
+                <lightning-combobox label="Item Status" options={statusOptions} value={itemStatus} onchange={handleItemStatusChange}></lightning-combobox>
+        
+                <template if:false={hasParent}>
+                    <!-- Button to save the Item -->
+                    <div class="slds-m-top_small slds-m-bottom_small" >
+                        <template if:true={isLoading}>
+                            <lightning-spinner class="slds-align_absolute-center" alternative-text="Loading" size="small"></lightning-spinner>
+                        </template>
+                        <template if:false={isLoading}>
+                            <lightning-button class="slds-align_absolute-center" variant="brand" label="Save Item" onclick={handleSaveItem}></lightning-button>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </lightning-card>
+    </div>
+</template>

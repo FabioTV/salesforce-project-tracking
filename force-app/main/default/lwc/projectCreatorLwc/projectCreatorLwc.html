@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title="Create Project">
+        <!-- Project Name -->
+        <div class="slds-m-right_large slds-m-left_large">
+            <lightning-input label="Project Name" value={projectName} onchange={handleProjectNameChange}></lightning-input>
+    
+            <div class="slds-m-top_small slds-m-bottom_small">
+                <!-- Button to add Milestone -->
+                <lightning-button variant="success" label="+ Milestone" onclick={handleAddMilestone}></lightning-button>
+                <!-- Button to delete Milestone -->
+                <template lwc:if={hasMilestone}>
+                    <lightning-button variant="destructive" class="slds-m-left_large" label="- Milestone" onclick={handleDelMilestone}></lightning-button>
+                </template>
+            </div>
+            <template if:true={hasMilestone} >
+                <div class="slds-m-top_small slds-m-bottom_small">
+                    Milestones:
+                </div>
+            </template>
+            <!-- Milestones -->
+            <div class="slds-m-top_small slds-m-bottom_small">
+                <template for:each={milestones} for:item="milestone">
+                    <c-milestone-creator-lwc key={milestone.id} has-parent="true" milestone-id={milestone.id} onmilestonechange={handleMilestoneChange}></c-milestone-creator-lwc>
+                </template>
+            </div>
+        </div>
+
+        <!-- Button to save the Project -->
+        <template if:true={isLoading}>
+            <lightning-spinner class="slds-align_absolute-center" alternative-text="Loading" size="small"></lightning-spinner>
+        </template>
+        <template if:false={isLoading} >
+            <lightning-button class="slds-align_absolute-center" variant="brand" label="Save Project" onclick={handleSaveProject}></lightning-button>
+        </template>
+        
+    </lightning-card>
+</template>

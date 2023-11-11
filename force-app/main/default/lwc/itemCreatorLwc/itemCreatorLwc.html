@@ -3,7 +3,7 @@
         <lightning-card title={title}>
             <div class="slds-m-right_large slds-m-left_large">
                 <!-- Item Name -->
-                <lightning-input label="Item Name" value={itemName} onchange={handleItemNameChange}></lightning-input>
+                <lightning-input label="Item Name" maxlength="80" value={itemName} onchange={handleItemNameChange}></lightning-input>
         
                 <!-- Item Status (Picklist) -->
                 <lightning-combobox label="Item Status" options={statusOptions} value={itemStatus} onchange={handleItemStatusChange}></lightning-combobox>

@@ -3,7 +3,7 @@
         <lightning-button class="slds-m-left_x-small" slot="actions" label="See All Projects" onclick={navigateToObjectList}></lightning-button>
         <!-- Project Name -->
         <div class="slds-m-right_large slds-m-left_large">
-            <lightning-input label="Project Name" value={projectName} onchange={handleProjectNameChange}></lightning-input>
+            <lightning-input label="Project Name" value={projectName} onchange={handleProjectNameChange} maxlength="80"></lightning-input>
     
             <div class="slds-m-top_small slds-m-bottom_small">
                 <!-- Button to add Milestone -->

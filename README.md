@@ -1,10 +1,20 @@
-# Salesforce DX Project: Next Steps
+# Salesforce Project Tracking
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+This Salesforce Project Tracker is designed to streamline project management by allowing users to create projects and define multiple milestones associated with each project. It enables the organization of to-do items related to these milestones, providing a comprehensive view of project progress and specific goals achieved.
+
+## Milestone Management
+
+Add multiple milestones to a project, each with its unique description and timeline.
+Track the completion status of each milestone.
+
+## Item Association
+
+Associate specific to-do items with each milestone.
+Update and manage these items with relevant information and progress indicators.
 
 ## How Do You Plan to Deploy Your Changes?
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+sfdx force:source:deploy --manifest ./manifest/package.xml
 
 ## Configure Your Salesforce DX Project
 

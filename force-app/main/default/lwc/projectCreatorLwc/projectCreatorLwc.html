@@ -1,5 +1,6 @@
 <template>
     <lightning-card title="Create Project">
+        <lightning-button class="slds-m-left_x-small" slot="actions" label="See All Projects" onclick={navigateToObjectList}></lightning-button>
         <!-- Project Name -->
         <div class="slds-m-right_large slds-m-left_large">
             <lightning-input label="Project Name" value={projectName} onchange={handleProjectNameChange}></lightning-input>
@@ -26,12 +27,14 @@
         </div>
 
         <!-- Button to save the Project -->
-        <template if:true={isLoading}>
-            <lightning-spinner class="slds-align_absolute-center" alternative-text="Loading" size="small"></lightning-spinner>
-        </template>
-        <template if:false={isLoading} >
-            <lightning-button class="slds-align_absolute-center" variant="brand" label="Save Project" onclick={handleSaveProject}></lightning-button>
-        </template>
+        <div slot="footer">
+            <template if:true={isLoading}>
+                <lightning-spinner class="slds-align_absolute-center" alternative-text="Loading" size="small"></lightning-spinner>
+            </template>
+            <template if:false={isLoading} >
+                <lightning-button class="slds-align_absolute-center" variant="brand" label="Save Project" onclick={handleSaveProject}></lightning-button>
+            </template>
+        </div>
         
     </lightning-card>
 </template>

@@ -1,8 +1,9 @@
 import { LightningElement, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { NavigationMixin } from "lightning/navigation";
 import createProject from '@salesforce/apex/ProjectCreatorController.createProject';
 
-export default class ProjectCreatorLwc extends LightningElement {
+export default class ProjectCreatorLwc extends NavigationMixin(LightningElement) {
     @track projectName;
     @track milestones = [];
     isLoading = false;
@@ -85,6 +86,23 @@ export default class ProjectCreatorLwc extends LightningElement {
         this.milestones = [];
         this.projectName = '';
     }
+
+    navigateToObjectList() {
+        console.log('Entrou');
+        // Navigate to the Projects__c object list page.
+        this[NavigationMixin.Navigate]({
+          type: "standard__objectPage",
+          attributes: {
+            objectApiName: "Project__c",
+            actionName: "list",
+          },state: {
+            // 'filterName' is a property on the page 'state'
+            // and identifies the target list view.
+            // It may also be an 18 character list view id.
+            filterName: "All", // or by 18 char '00BT0000002TONQMA4'
+          },
+        });
+      }
 
     get hasMilestone() {
         if (this.milestones.length > 0) return true;
